@@ -2,9 +2,19 @@
 
 Interface de linha de comando (CLI) para simular autômatos finitos e principais algoritmos existente sobre autômatos.
 
+## Diretórios do projeto
+
+A pasta `projects/` tem todo o código referente ao projeto.
+
+Dentro de `projects/`, temos a pasta `comands/`, que contém o código todos os comandos e as funções executadas pelos mesmos.
+
+Também dentro de `projects/`, temos a pasta `utils/`, que contém funções utilitárias que podem ser reaproveitadas em mais de um contexto.
+
 ## Instalação
 
 Este projeto é feito utilizando [Python 3](https://www.python.org/), você precisa tê-lo [instalado](https://www.python.org/downloads/) na sua máquina.
+
+Além disso, o projeto também se utiliza do pacote *Click* ([ver documentação](https://click.palletsprojects.com/en/7.x/)), para facilitar a construção de uma CLI usando Python.
 
 ### Configuração do projeto
 
