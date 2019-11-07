@@ -4,11 +4,11 @@ Interface de linha de comando (CLI) para simular autômatos finitos e principais
 
 ## Diretórios do projeto
 
-A pasta `projects/` tem todo o código referente ao projeto.
+A pasta `project/` tem todo o código referente ao projeto.
 
-Dentro de `projects/`, temos a pasta `comands/`, que contém o código todos os comandos e as funções executadas pelos mesmos.
+Dentro de `project/`, temos a pasta `comands/`, que contém o código todos os comandos e as funções executadas pelos mesmos.
 
-Também dentro de `projects/`, temos a pasta `utils/`, que contém funções utilitárias que podem ser reaproveitadas em mais de um contexto.
+Também dentro de `project/`, temos a pasta `utils/`, que contém funções utilitárias que podem ser reaproveitadas em mais de um contexto.
 
 ## Instalação
 
