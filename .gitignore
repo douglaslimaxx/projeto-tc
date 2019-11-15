@@ -169,3 +169,5 @@ stage/
 pip-wheel-metadata/
 
 .vscode
+
+src/*.pyc
