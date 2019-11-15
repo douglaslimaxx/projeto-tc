@@ -9,7 +9,7 @@ Rode o comando no terminal:
 python src/index.py data/exemplo.txt <entrada>
 ```
 
-Onde `<entrada>` é uma palavra qualquer usando o alfabeto {0, 1}. Essa entrada por enquanto não é utilizada.
+Onde `<entrada>` é uma palavra qualquer usando o alfabeto {0, 1}. Essa entrada por enquanto não é utilizada e `data/exemplo.txt` é o caminho para o arquivo que contém o autômato.
 
 ## Diretórios do projeto
 
