@@ -1,7 +1,0 @@
-estados A, B
-inicial A
-aceita B
-A B 0
-B A 0
-A A 1
-B B 1

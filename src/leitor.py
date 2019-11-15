@@ -6,10 +6,19 @@ def converte_transicao(raw):
   return Transicao(origem, entrada, destino)
 
 def importa_automato(caminho):
-  f = open(caminho, 'r')
-  lines = f.read().split('\n')
+  """ Importa um automato presente em um arquivo
 
-  estados, inicial, aceitacao = lines[:3]
+  Args: 
+    caminho (str): caminho para o arquivo que contém o autômato
+
+  Returns:
+    automato (Automato): o automato presente no arquivo
+
+  """
+  f = open(caminho, 'r')
+  linhas = f.read().split('\n')
+
+  estados, inicial, aceitacao = linhas[:3]
   estados = estados[len("estados "):]
   estados = estados.split(', ')
 
@@ -18,7 +27,7 @@ def importa_automato(caminho):
   aceitacao = aceitacao[len("aceita "):]
   aceitacao = aceitacao.split(', ')
 
-  transicoes = lines[3:]
+  transicoes = linhas[3:]
   transicoes.pop()
   transicoes = map(converte_transicao, transicoes)
 

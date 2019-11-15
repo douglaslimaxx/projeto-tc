@@ -1,5 +1,10 @@
-## Considerando alfabeto = {0,1}
 class Automato:
+  """
+  Representação de um autômato.
+
+  Armazena os estados, estado inicial, estado de aceitação e uma lista de transições
+  que são objetos do tipo Transicao.
+  """
   def __init__(self, estados, estado_inicial, estados_aceitacao, transicoes):
     self._estados = estados
     self._estado_inicial = estado_inicial
@@ -23,6 +28,13 @@ class Automato:
     return self._transicoes
 
 class Transicao:
+  """
+  Representação de uma transição de um autômato. 
+  Armazena o estado de origem, a entrada e o estado de destino.
+
+  Origem é o estado em que o automato se encontra, entrada é um símbolo do alfabeto
+  que leva a um estado de Destino.
+  """
   def __init__(self, origem, entrada, destino):
     self._origem = origem
     self._entrada = entrada
@@ -41,4 +53,7 @@ class Transicao:
     return self._destino
 
   def __str__(self):
+    """
+    Representação textual de uma transição na forma "(estado_origem, entrada) => (estado_destino)"
+    """
     return "(%s, %s) => %s" % (self._origem, self._entrada, self._destino)

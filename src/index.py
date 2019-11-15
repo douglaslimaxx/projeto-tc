@@ -2,8 +2,8 @@
 import sys
 from leitor import importa_automato
 
-arguments = sys.argv[1:]
-caminho, dados = arguments[0:2]
+args = sys.argv[1:]
+caminho, entrada = args[0:2]
 automato = importa_automato(caminho)
 
 print "Estados:", automato.estados
