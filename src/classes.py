@@ -31,6 +31,16 @@ class Automato:
     def transicoes(self):
         return self._transicoes
 
+    def get_destinos(self, origem, entrada):
+        destinos = []
+
+        for transicao in self._transicoes:
+            if transicao.origem == origem and transicao.entrada == entrada:
+                destinos.append(transicao.destino)
+                break
+
+        return destinos
+
     def get_transicoes_dict(self):
         transicoes_dict = {}
 
@@ -115,7 +125,6 @@ class AutomatoDeterministico(Automato):
         self._estados = []
         self._transicoes = []
         self._estado_inicial = afn.estado_inicial
-        self._estados_aceitacao = afn.estados_aceitacao
         self._estados.append(afn.estado_inicial)
 
         afn_transicoes_dict = afn.get_transicoes_dict()
@@ -124,8 +133,9 @@ class AutomatoDeterministico(Automato):
             for simbolo in [0, 1]:
                 key = (estado_afd, simbolo)
 
-                if key in afn_transicoes_dict:
-                    destino = afn_transicoes_dict[key]
+                destino = afn.get_destinos(estado_afd, simbolo)
+
+                if len(destino) > 0:
                     destino = destino[0] if len(
                         destino) == 1 else tuple(destino)
 
@@ -136,6 +146,18 @@ class AutomatoDeterministico(Automato):
                     if transicao not in self._transicoes:
                         self._transicoes.append(transicao)
                 else:
-                    transicao = Transicao(estado_afd, simbolo, estado_afd)
+                    estado_rejeicao = 'R'
+                    
+                    if estado_rejeicao not in self._estados:
+                        self._estados.append(estado_rejeicao)
+
+                    transicao = Transicao(estado_afd, simbolo, estado_rejeicao)
                     if transicao not in self._transicoes:
                         self._transicoes.append(transicao)
+
+            tupla = tuple(estado_afd)
+            for estado in tupla:
+                if estado in afn.estados_aceitacao and (
+                        tupla not in self._estados_aceitacao):
+                    self._estados_aceitacao.append(
+                        tupla if len(tupla) > 1 else tupla[0])
