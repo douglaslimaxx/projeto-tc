@@ -41,23 +41,6 @@ class Automato:
 
         return destinos
 
-    def get_transicoes_dict(self):
-        transicoes_dict = {}
-
-        for transicao in self._transicoes:
-            origem = transicao.origem
-            destino = transicao.destino
-            entrada = transicao.entrada
-
-            key = (origem, entrada)
-
-            if key in transicoes_dict:
-                transicoes_dict[key].append(destino)
-            else:
-                transicoes_dict[key] = [destino]
-
-        return transicoes_dict
-
 
 class Transicao:
     """
@@ -127,8 +110,6 @@ class AutomatoDeterministico(Automato):
         self._estado_inicial = afn.estado_inicial
         self._estados.append(afn.estado_inicial)
 
-        afn_transicoes_dict = afn.get_transicoes_dict()
-
         for estado_afd in self._estados:
             for simbolo in [0, 1]:
                 key = (estado_afd, simbolo)
@@ -147,7 +128,7 @@ class AutomatoDeterministico(Automato):
                         self._transicoes.append(transicao)
                 else:
                     estado_rejeicao = 'R'
-                    
+
                     if estado_rejeicao not in self._estados:
                         self._estados.append(estado_rejeicao)
 
