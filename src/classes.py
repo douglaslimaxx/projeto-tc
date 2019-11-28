@@ -31,6 +31,23 @@ class Automato:
     def transicoes(self):
         return self._transicoes
 
+    def get_transicoes_dict(self):
+        transicoes_dict = {}
+
+        for transicao in self._transicoes:
+            origem = transicao.origem
+            destino = transicao.destino
+            entrada = transicao.entrada
+
+            key = (origem, entrada)
+
+            if key in transicoes_dict:
+                transicoes_dict[key].append(destino)
+            else:
+                transicoes_dict[key] = [destino]
+
+        return transicoes_dict
+
 
 class Transicao:
     """
@@ -63,3 +80,62 @@ class Transicao:
         Representação textual de uma transição na forma "(estado_origem, entrada) => (estado_destino)"
         """
         return "(%s, %s) => %s" % (self._origem, self._entrada, self._destino)
+
+    def __eq__(self, other):
+        if isinstance(other, Transicao):
+            return (
+                self._origem == other._origem and
+                self._entrada == other._entrada and
+                self._destino == other._destino
+            )
+        return False
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+
+class AutomatoNaoDeterministico(Automato):
+
+    def __init__(self, estados=None, estado_inicial=None, estados_aceitacao=None, transicoes=None):
+        self._estados = estados if estados is not None else []
+        self._estado_inicial = estado_inicial if estado_inicial is not None else 0
+        self._estados_aceitacao = estados_aceitacao if estados_aceitacao is not None else []
+        self._transicoes = transicoes if transicoes is not None else []
+
+
+class AutomatoDeterministico(Automato):
+
+    def __init__(self, estados=None, estado_inicial=None, estados_aceitacao=None, transicoes=None):
+        self._estados = estados if estados is not None else []
+        self._estado_inicial = estado_inicial if estado_inicial is not None else 0
+        self._estados_aceitacao = estados_aceitacao if estados_aceitacao is not None else []
+        self._transicoes = transicoes if transicoes is not None else []
+
+    def converter_a_partir_de_afn(self, afn):
+        self._estados = []
+        self._transicoes = []
+        self._estado_inicial = afn.estado_inicial
+        self._estados_aceitacao = afn.estados_aceitacao
+        self._estados.append(afn.estado_inicial)
+
+        afn_transicoes_dict = afn.get_transicoes_dict()
+
+        for estado_afd in self._estados:
+            for simbolo in [0, 1]:
+                key = (estado_afd, simbolo)
+
+                if key in afn_transicoes_dict:
+                    destino = afn_transicoes_dict[key]
+                    destino = destino[0] if len(
+                        destino) == 1 else tuple(destino)
+
+                    if destino not in self._estados:
+                        self._estados.append(destino)
+
+                    transicao = Transicao(estado_afd, simbolo, destino)
+                    if transicao not in self._transicoes:
+                        self._transicoes.append(transicao)
+                else:
+                    transicao = Transicao(estado_afd, simbolo, estado_afd)
+                    if transicao not in self._transicoes:
+                        self._transicoes.append(transicao)
