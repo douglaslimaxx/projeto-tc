@@ -18,6 +18,14 @@ def uniao(automato1, automato2):
     return Automato(estados, novo_estado_inicial, estados_aceitacao, transicoes)
 
 
+def intersecao(automato1, automato2):
+    novo_estado_inicial = (automato1.estado_inicial, automato2.estado_inicial)
+    estados = (automato1.estados, automato2.estados)
+    transicoes = ((automato1.estados, automato1.transicoes), (automato2.estados, automato2.transicoes))
+    estados_aceitacao = (automato1.estados_aceitacao, automato2.estados_aceitacao)
+
+    return Automato(estados, novo_estado_inicial, estados_aceitacao, transicoes)
+
 def complemento(automato):
 
     estados_aceitacao = [
