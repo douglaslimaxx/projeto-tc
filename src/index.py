@@ -1,6 +1,7 @@
 # coding: utf-8
 import sys
 from leitor import importa_automato
+from verificador import verificador
 
 args = sys.argv[1:]
 caminho, entrada = args[0:2]
@@ -12,3 +13,5 @@ print("Estados de aceitação:", automato.estados_aceitacao)
 print("Transições:")
 for transicao in automato.transicoes:
     print(transicao)
+
+verificador(automato, entrada)

@@ -20,14 +20,14 @@ def uniao(automato1, automato2):
 
 def intersecao(automato1, automato2):
     novo_estado_inicial = automato1.estado_inicial * automato2.estado_inicial
-    for au1 in automato1.transicoes
-        for au2 in automato2.transicoes
-            if ((au1.destino in automato1.estados_aceitacao) and (au2.destino in automato2.estados_aceitacao))
-                if ((au1.destino * au2.destino) not in estados_aceitacao)
+    for au1 in automato1.transicoes:
+        for au2 in automato2.transicoes:
+            if ((au1.destino in automato1.estados_aceitacao) and (au2.destino in automato2.estados_aceitacao)):
+                if ((au1.destino * au2.destino) not in estados_aceitacao):
                     estados_aceitacao.append(au1.destino * au2.destino)
-            if (au1.entrada == au2.entrada)
+            if (au1.entrada == au2.entrada):
                 transicoes.append(au1.origem * au2.origem, au1.entrada, au1.destino * au2.destino)
-                if ((au1.destino * au2.destino) not in estados)
+                if ((au1.destino * au2.destino) not in estados):
                     estados.append(au1.destino * au2.destino)
            
     return Automato(estados, novo_estado_inicial, estados_aceitacao, transicoes)
