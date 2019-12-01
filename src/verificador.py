@@ -21,4 +21,4 @@ def verificador(automato, palavra):
     if(resultado):
         print("A palava %s foi aceita" % palavra)
     else:
-        print("A palava %s nao foi aceita" % palavra)
+        print("A palava %s não foi aceita" % palavra)
