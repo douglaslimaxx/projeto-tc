@@ -119,10 +119,6 @@ class AutomatoDeterministico(Automato):
                 destino = afn.get_destinos(estado_afd, simbolo)
 
                 if len(destino) > 0:
-                    for d in destino:
-                        if d not in self._estados:
-                            self._estados.append(d)
-
                     destino = destino[0] if len(
                         destino) == 1 else tuple(destino)
 
