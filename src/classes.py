@@ -33,10 +33,13 @@ class Automato:
 
     def get_destinos(self, origem, entrada):
         destinos = []
+        origem = tuple(origem)
+        print(origem)
 
-        for transicao in self._transicoes:
-            if transicao.origem == origem and transicao.entrada == entrada:
-                destinos.append(transicao.destino)
+        for o in origem:
+            for transicao in self._transicoes:
+                if transicao.origem == o and transicao.entrada == entrada and transicao.destino not in destinos:
+                    destinos.append(transicao.destino)
 
         return destinos
 
@@ -116,6 +119,10 @@ class AutomatoDeterministico(Automato):
                 destino = afn.get_destinos(estado_afd, simbolo)
 
                 if len(destino) > 0:
+                    for d in destino:
+                        if d not in self._estados:
+                            self._estados.append(d)
+
                     destino = destino[0] if len(
                         destino) == 1 else tuple(destino)
 
