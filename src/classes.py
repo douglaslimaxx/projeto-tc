@@ -31,6 +31,16 @@ class Automato:
     def transicoes(self):
         return self._transicoes
 
+    def __eq__(self, other):
+        if isinstance(other, Automato):
+            return (
+                self._transicoes == other._transicoes and
+                self._estados_aceitacao == other._estados_aceitacao and
+                self._estado_inicial == other._estado_inicial and
+                self._transicoes == other._transicoes
+            )
+        return False    
+
     def get_destinos(self, origem, entrada):
         destinos = []
         origem = tuple(origem)
