@@ -37,7 +37,6 @@ class Automato:
         for transicao in self._transicoes:
             if transicao.origem == origem and transicao.entrada == entrada:
                 destinos.append(transicao.destino)
-                break
 
         return destinos
 

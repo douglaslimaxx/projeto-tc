@@ -1,8 +1,10 @@
 from classes import *
 
-afn = AutomatoNaoDeterministico(['A', 'B'], 'A', ['B'], [Transicao(
-    'A', 0, 'B'), Transicao('B', 0, 'B'), Transicao('B', 1, 'B')]
-)
+afn = AutomatoNaoDeterministico(
+    ['A', 'B', 'C'], 'A', ['C'], [Transicao('A', 0, 'A'), 
+    Transicao('A', 1, 'A'), Transicao('A', 0, 'B'),
+    Transicao('B', 0, 'C'), Transicao('B', 1, 'C'),
+    Transicao('C', 0, 'C'), Transicao('C', 1, 'C')])
 
 print("NÃO DETERMINÍSTICO: ")
 print("Estados:", afn.estados)
