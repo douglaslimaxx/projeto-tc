@@ -3,22 +3,27 @@ from leitor import *
 from classes import *
 
 def verifica(automato, palavra):
-    estado_atual = automato.estado_inicial
+    estados_atuais = automato.estado_inicial
     for i in palavra:
-        estado_atual = efetua_transicao(i, automato, estado_atual)
-    if(estado_atual in automato.estados_aceitacao):
-        return True
-    else:
-        return False
+        estados_atuais = efetua_transicao(i, automato, estados_atuais)
+        print(estados_atuais)
+    for k in estados_atuais:
+        if (k in automato.estados_aceitacao):
+            return True
+    return False
 
 def efetua_transicao(terminal, automato, estado_atual):
+    destinos = []
     for i in automato.transicoes:
-        if((estado_atual == i.origem) and (terminal == i.entrada)):
-            return i.destino
+        for j in estado_atual:
+            if((j == i.origem) and ((terminal == i.entrada) or i.entrada == "e")):
+                destinos.append(i.destino)
+    return destinos
 
 def verificador(automato, palavra):
     resultado = verifica(automato, palavra)
+    print(resultado)
     if(resultado):
-        print("A palava %s foi aceita" % palavra)
+        print("A palavra %s foi aceita" % palavra)
     else:
-        print("A palava %s não foi aceita" % palavra)
+        print("A palavra %s não foi aceita" % palavra)

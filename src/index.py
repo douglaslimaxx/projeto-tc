@@ -14,6 +14,5 @@ print("Estados de aceitação: %s" % automato.estados_aceitacao)
 print("Transições:")
 for transicao in automato.transicoes:
     print(transicao)
-
 print("\n----VERIFICAÇÃO----")
 verificador(automato, entrada)
