@@ -34,7 +34,6 @@ class Automato:
     def get_destinos(self, origem, entrada):
         destinos = []
         origem = tuple(origem)
-        print(origem)
 
         for o in origem:
             for transicao in self._transicoes:
