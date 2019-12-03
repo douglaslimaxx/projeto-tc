@@ -33,8 +33,6 @@ def importa_automato(caminho):
 
   automato = Automato(estados, inicial, aceitacao, transicoes)
 
-  imprimir_automato(automato)
-
   return automato
 
 def imprimir_automato(automato):
