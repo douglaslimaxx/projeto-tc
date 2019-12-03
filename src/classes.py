@@ -87,11 +87,7 @@ class Transicao:
 
     def __eq__(self, other):
         if isinstance(other, Transicao):
-            return (
-                self._origem == other._origem and
-                self._entrada == other._entrada and
-                self._destino == other._destino
-            )
+            return self._origem == other.origem and self._entrada == other.entrada and self._destino == other.destino
         return False
 
     def __ne__(self, other):
@@ -122,7 +118,7 @@ class AutomatoDeterministico(Automato):
         self._estados.append(afn.estado_inicial)
 
         for estado_afd in self._estados:
-            for simbolo in [0, 1]:
+            for simbolo in ['0', '1']:
                 key = (estado_afd, simbolo)
 
                 destino = afn.get_destinos(estado_afd, simbolo)
