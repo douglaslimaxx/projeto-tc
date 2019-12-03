@@ -31,4 +31,17 @@ def importa_automato(caminho):
   transicoes.pop()
   transicoes = map(converte_transicao, transicoes)
 
-  return Automato(estados, inicial, aceitacao, transicoes)
+  automato = Automato(estados, inicial, aceitacao, transicoes)
+
+  imprimir_automato(automato)
+
+  return automato
+
+def imprimir_automato(automato):
+  print("\n----AUTOMATO----")
+  print("Estados: %s" % automato.estados)
+  print("Estado inicial: %s" % automato.estado_inicial)
+  print("Estados de aceitação: %s" % automato.estados_aceitacao)
+  print("Transições:")
+  for transicao in automato.transicoes:
+      print(transicao)

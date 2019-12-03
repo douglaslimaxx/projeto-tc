@@ -1,4 +1,6 @@
+# coding: utf-8
 from classes import *
+from leitor import *
 
 
 def uniao(automato1, automato2):
