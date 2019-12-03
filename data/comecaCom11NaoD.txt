@@ -3,3 +3,5 @@ inicial A
 aceita C
 A B 1
 B C 1
+C C 1
+C C 0
