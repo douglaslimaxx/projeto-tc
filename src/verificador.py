@@ -1,11 +1,14 @@
 # coding: utf-8
-from leitor import *
-from classes import *
+import sys
+from leitor import importa_automato
 
 def verifica(automato, palavra):
     estado_atual = automato.estado_inicial
-    for i in palavra:
-        estado_atual = efetua_transicao(i, automato, estado_atual)
+    print("Estado        Palavra")
+    for i in range(len(palavra)):
+        print("%s             %s" % (estado_atual, palavra[i:len(palavra)]))
+        estado_atual = efetua_transicao(palavra[i], automato, estado_atual)
+    print("%s             %s" % (estado_atual, "e"))
     if(estado_atual in automato.estados_aceitacao):
         return True
     else:
@@ -22,3 +25,10 @@ def verificador(automato, palavra):
         print("A palava %s foi aceita" % palavra)
     else:
         print("A palava %s não foi aceita" % palavra)
+
+args = sys.argv[1:]
+caminho, entrada = args[0:2]
+automato = importa_automato(caminho)
+
+print("\n----VERIFICAÇÃO----")
+verificador(automato, entrada)

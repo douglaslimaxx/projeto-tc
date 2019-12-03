@@ -1,8 +1,12 @@
+# coding: utf-8
+import sys
 from classes import *
+from leitor import *
 
-afn = AutomatoNaoDeterministico(['A', 'B'], 'A', ['B'], [Transicao(
-    'A', 0, 'B'), Transicao('B', 0, 'B'), Transicao('B', 1, 'B')]
-)
+args = sys.argv[1:]
+caminho = args[0]
+automato = importa_automato(caminho)
+afn = AutomatoNaoDeterministico(automato.estados, automato.estado_inicial, automato.estados_aceitacao, automato.transicoes)
 
 print("NÃO DETERMINÍSTICO: ")
 print("Estados:", afn.estados)
